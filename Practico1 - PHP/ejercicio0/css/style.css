@@ -1,0 +1,9 @@
+.resaltado, th{
+    background-color: yellow; 
+}
+td, th{
+   text-align: center;
+   border: solid 1px black;
+   width: 20px; 
+}
+
