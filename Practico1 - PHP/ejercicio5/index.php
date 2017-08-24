@@ -7,7 +7,9 @@
     </head>
     <body>
 
-
+    <form id="formulario" action="sumar.php" method="post">
+    <button type="submit">Submit</button>
+    </form>
 
 
     <script src="inputGenerator.js"></script>
