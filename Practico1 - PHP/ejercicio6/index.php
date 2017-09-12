@@ -17,7 +17,7 @@
 
             <?php
                 if(isset($_POST["inversion"])){
-                    $tasa = 0.2;
+                    $tasa = 0.014;
                     $total = $_POST["inversion"];
                     echo "<table>
                             <thead>
