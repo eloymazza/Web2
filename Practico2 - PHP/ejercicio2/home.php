@@ -14,7 +14,7 @@
             <body>
                 <h1> Figuras </h1>
                 <a href='example'> Ejemplo </a>
-                <form>
+                <form action='circulos' method='get'>
                     <input type='number' name='radio'>
                     <button type='submit' id='botonCrearCirculo'>Crear Circulo</button>
                 </form>

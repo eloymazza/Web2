@@ -7,7 +7,7 @@
     require_once("Figuras/Figuras.php");
     require_once("Figuras/AreaFilter.php");
 
-    function circulos($a = 2){
-        print_r($a);
+    function circulos(){
+        echo $_GET["radio"];
     }
 ?>
