@@ -1,7 +1,5 @@
 <?php
 
-
-
 class DataBase{
 
     protected $db;
@@ -42,10 +40,36 @@ class DBPreloader extends DataBase{
 
 class DBInteractions extends DataBase{
     
+    function __construct(){
+        parent::__construct();
 
+    }
+    
+    function getMaterias(){
 
+        $sql = $this->db->prepare('SELECT * FROM materia');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getAlumnos($materia){
+        $sql = $this->db->prepare('SELECT dni FROM inscriptos WHERE '.$materia.'=?');
+        $sql->execute([1]);
+        $regAlumnos =  $sql->fetchAll(PDO::FETCH_ASSOC);
+        $alumnos = array();
+        
+        foreach ($regAlumnos as $regAlumno) {
+            $sql = $this->db->prepare('SELECT * FROM alumno WHERE dni=?');
+            $sql->execute([$regAlumno["dni"]]);
+            $alumnos[] = $sql->fetchAll()[0];
+        }
+        return $alumnos;
+        
+    }
 
 }
+
+
 
 if(!file_exists('dbStart/preloaded.txt')){
     $paths = array(
@@ -60,5 +84,7 @@ if(!file_exists('dbStart/preloaded.txt')){
     );
     $preloader = new DBPreloader($paths, $sentences);
 }
+
+
 
 ?>
