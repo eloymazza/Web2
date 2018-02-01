@@ -16,6 +16,7 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="css/main.css">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
             <title>Asistencia</title>
         </head>
@@ -49,6 +50,14 @@
                         <div class="col-md-12 js-contenedor-alumnos">';
                     echo'</div>
                     </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                        <label>
+                        <span class="bolder"> Elije el dia donde cargar la asistencia: </span>
+                        </label>
+                        <input type="number" min="1" max="30" value="1" class="js-selector-dia">
+                        </div>
+                    </div>
                 </div>
             </body>
             
@@ -62,10 +71,13 @@
     function cargarAlumnos($materia){
         $db = new DBInteractions();
         $alumnos = $db->getAlumnos($materia[0]);
+
         
         echo '<ul>';
         foreach ($alumnos as $alumno) {
-            echo '<li>'.$alumno["nombre"].' '.$alumno['apellido'].'</li>';
+            echo '<li>'
+            .$alumno["nombre"].' '.$alumno['apellido'].'<button class="js-grabar-asistencia" name="js-materia-'.$materia[0].'" id="js-alumno-'.$alumno['id_alumno'].'">Asistio</button>
+            </li>';
         }
         echo '</ul>';
     }
