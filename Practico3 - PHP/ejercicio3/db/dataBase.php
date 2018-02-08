@@ -67,6 +67,30 @@ class DBInteractions extends DataBase{
         
     }
 
+    function getIDMateria($nombreMateria){
+        $sql = $this->db->prepare('SELECT id_materia FROM materia WHERE nombre=?');
+        $sql->execute([$nombreMateria]);
+        $result = $sql->fetch()[0];
+        return $result;
+
+    }
+
+    function asistio($dia, $alumno, $idMateria){
+        $query = $this->db->prepare('SELECT id_alumno FROM reg_asist where id_alumno=? and dia=? and id_materia=?');
+        $query->execute([$alumno,$dia,$idMateria]);
+        $result = $query->fetchAll();
+        return empty($result);
+    }
+
+    function crearRegistro($params){
+        $id_alumno = $params[0];
+        $id_materia = $this->getIDMateria($params[1]);
+        $dia = $params[2];
+                
+        $query = $this->db->prepare('INSERT INTO reg_asist(id_alumno, id_materia, dia) VALUES (?,?,?)');
+        $query->execute([$id_alumno, $id_materia, $dia]);
+    }
+
 }
 
 

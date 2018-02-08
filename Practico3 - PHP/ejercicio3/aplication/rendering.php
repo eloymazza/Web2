@@ -1,13 +1,6 @@
 <?php
 
-
-    function cargarMaterias($db){
-        $materias = $db->getMaterias();
-        foreach ($materias as $materia) {
-            echo '<button class="ml-3 js-materia-btn" value="'.$materia['nombre'].'">'.$materia['nombre'].'</button>';
-        }
-    }
-    
+   
     function home(){
         $db = new DBInteractions();
         echo '
@@ -51,11 +44,27 @@
                     echo'</div>
                     </div>
                     <div class="row">
-                    <div class="col-md-12">
-                        <label>
-                        <span class="bolder"> Elije el dia donde cargar la asistencia: </span>
-                        </label>
-                        <input type="number" min="1" max="30" value="1" class="js-selector-dia">
+                        <div class="col-md-12">
+                            <label>
+                                <span class="bolder"> Elije el dia donde cargar la asistencia: </span>
+                            </label>
+                            <select name="day" id="js-dia">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                            </select> 
                         </div>
                     </div>
                 </div>
@@ -68,18 +77,38 @@
         </html>';
     }
 
-    function cargarAlumnos($materia){
-        $db = new DBInteractions();
-        $alumnos = $db->getAlumnos($materia[0]);
+    function cargarAlumnos($params){
 
-        
+        $db = new DBInteractions();
+
+        $nombreMateria = $params[0];
+        $dia = $params[1];
+
+        $alumnos = $db->getAlumnos($nombreMateria);
         echo '<ul>';
         foreach ($alumnos as $alumno) {
-            echo '<li>'
-            .$alumno["nombre"].' '.$alumno['apellido'].'<button class="js-grabar-asistencia" name="js-materia-'.$materia[0].'" id="js-alumno-'.$alumno['id_alumno'].'">Asistio</button>
-            </li>';
+            echo '<li>'.$alumno["nombre"].' '.$alumno["apellido"];
+            if($db->asistio($dia, $alumno["id_alumno"], $db->getIDMateria($nombreMateria))){
+               echo '<button class="js-grabar-asistencia ml-3" name="js-materia-'.$nombreMateria[0].'" id="alumno-'.$alumno["id_alumno"].'">Cargar Asistencia</button>(Inasistencia)';
+            }
+            else{
+                echo '<span class="bolder ">Asistio</span></li>';
+            }
         }
         echo '</ul>';
+    }
+
+    function crearRegistro($params){
+        $db = new DBInteractions();
+        $db->crearRegistro($params);
+    }
+
+       
+    function cargarMaterias($db){
+        $materias = $db->getMaterias();
+        foreach ($materias as $materia) {
+            echo '<button class="ml-3 js-materia-btn" value="'.$materia['nombre'].'">'.$materia['nombre'].'</button>';
+        }
     }
 
 ?>
