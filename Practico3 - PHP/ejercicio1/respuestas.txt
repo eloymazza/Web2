@@ -1,0 +1,7 @@
+a. Si, hay que pasarlos a binario. No es lo mas conveniente guardar fotos/videos
+en una db.
+b. Utilizando un nombre unico. Luego este nombre lo utilizamos para buscarlo
+en nuestro servidor de archivos, o en la carpeta donde tengamos las imagenes.
+ Hay formas de generar nombre unico con php.
+c. Se puede poner un registro que sea tipo en la tabla, o sino
+en el nombre poner "animales#123456.png". 

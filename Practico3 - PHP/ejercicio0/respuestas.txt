@@ -1,0 +1,16 @@
+0.1 Piense/busque ejemplos concretos de porque se utilizan archivos en vez de una BBDD:
+
+Se pueden utilizar archivos (incluso es mas conveniente) cuando la cantidad y/o complejidad
+de los datos que vamos a almacenar es peueña. Montar una db y adminstrarla es
+un proceso complejo y que lleva tiempo. Ponerla a funcionar por primera vez,
+crear las tablas, usuarios, tipos de datos, codificacion, etc es un proceso
+lerdo que podriamos y deberiamos evitar si podemos disponer de archivos para
+almacenar nuestros datos.
+
+Por ejemplo, si queremos hacer un sistema que contabilice un par de gastos en
+pocos aspectos (por ejemplo alquiler, comida, ropa, ocio) podemos simplemente
+tener estas 4 columnas e ir editando sus valores a medida que vayamos teniendo
+estos gastos.
+Lo mismo cuando se quiere tener un sistema de datos de personal, suponiendo
+que la empresa o institucion es pequeña. Solo necesitamos una fila por cada puesto
+que contenga los datos personales de cada ocupante, y que puede variar en el tiempo.
