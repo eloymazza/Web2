@@ -1,0 +1,30 @@
+
+.main-title{
+  font-size: 50px;
+}
+.subtitle{
+  font-size: 25px;
+}
+.custom-font{
+  font-family: 'Rubik Mono One', sans-serif;
+  font-weight: bolder;
+  color: white;
+  -webkit-text-stroke: 2px  black;
+}
+
+.center{
+  text-align: center;
+}
+
+.number-input-juego {
+  width: 60%;
+}
+
+.simple-border{
+  border: 2px solid black;
+}
+
+
+footer > .container-fluid{
+  height:100px;
+}
