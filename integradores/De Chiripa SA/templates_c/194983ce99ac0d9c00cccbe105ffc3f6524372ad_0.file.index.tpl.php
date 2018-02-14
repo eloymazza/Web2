@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-02-13 23:39:10
+/* Smarty version 3.1.30, created on 2018-02-14 01:46:17
   from "C:\xampp\htdocs\proyectos\Web2\integradores\De Chiripa SA\templates\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5a83690e04eb36_03029076',
+  'unifunc' => 'content_5a8386d9cbf768_24161653',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '194983ce99ac0d9c00cccbe105ffc3f6524372ad' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\Web2\\integradores\\De Chiripa SA\\templates\\index.tpl',
-      1 => 1518561549,
+      1 => 1518568902,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:mainSection.tpl' => 1,
   ),
 ),false)) {
-function content_5a83690e04eb36_03029076 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a8386d9cbf768_24161653 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,7 @@ function content_5a83690e04eb36_03029076 (Smarty_Internal_Template $_smarty_tpl)
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC:700" rel="stylesheet">
     <link rel="stylesheet" href="css/master.css">
     <title><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </title>

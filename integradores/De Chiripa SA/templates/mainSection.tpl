@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="row mb-3 mt-2">
+  <div class="row mb-3 mt-2">
+    <div class="col-md-4 ">
+      <div class="row">
         <div class="col-md-12 ">
-          <div class="center simple-border bg-primary">
-            <h3>Juego</h3>
+          <div class="center simple-border bg-primary mb-2">
+            <h3 class="custom-font">Juego</h3>
           </div>
         </div>
       </div>
@@ -27,6 +27,17 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="center simple-border bg-primary mb-2">
+        <h3 class="custom-font">Apuestas</h3>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body ">
+          <h4>Vista clasica:</h4>
+          {include file="templates/tablaApuestas.tpl"}
         </div>
       </div>
     </div>

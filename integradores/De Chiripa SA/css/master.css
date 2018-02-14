@@ -1,15 +1,17 @@
-
+*{
+  margin: 0;
+  padding: 0;
+}
 .main-title{
   font-size: 50px;
 }
 .subtitle{
-  font-size: 25px;
+  font-size: 30px;
 }
 .custom-font{
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Playfair Display SC', serif;
   font-weight: bolder;
   color: white;
-  -webkit-text-stroke: 2px  black;
 }
 
 .center{
@@ -22,6 +24,11 @@
 
 .simple-border{
   border: 2px solid black;
+}
+
+.max-heigth-table {
+  height: 425px;
+  overflow: scroll;
 }
 
 
