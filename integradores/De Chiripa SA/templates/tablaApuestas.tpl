@@ -7,10 +7,12 @@
     </tr>
   </thead>
   <tbody>
+    {foreach from=$apuestas item=$apuesta}
     <tr>
-      <td>06/06/2018</td>
-      <td>30</td>
+      <td>{$apuesta['fecha']}</td>
+      <td>{$apuesta['monto']}</td>
     </tr>
+    {/foreach}
   </tbody>
 </table>
 </div>

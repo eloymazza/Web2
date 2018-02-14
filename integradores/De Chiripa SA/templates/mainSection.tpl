@@ -11,10 +11,10 @@
       <div class="row">
         <div class="col-md-4 ">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="images/ruleta.jpg" alt="Ruleta">
+            <img class="card-img-top" src="images/{$imagen['nombre']}" alt="{$imagen['alt']}">
             <div class="card-body">
-              <h5 class="card-title">Ruleta</h5>
-              <p class="card-text">Ruleta clasica 37 numeros. Semi electronica. Sin  croupier</p>
+              <h5 class="card-title">{$juego['nombre']}</h5>
+              <p class="card-text">{$juego['descripcion']}</p>
               <div class="row">
                 <div class="col-md-12 center mb-2">
                   <bitton  class="btn btn-primary">Ingresar Apuesta</bitton>

@@ -1,6 +1,5 @@
 <?php
 
-
   class IndexView extends View
   {
 
@@ -8,12 +7,13 @@
         parent::__construct();
 
       }
-      function showIndex(){
+      function showIndex($juego,$imagen,$apuestas){
+        $this->smarty->assign('juego',$juego);
+        $this->smarty->assign('imagen',$imagen);
+        $this->smarty->assign('apuestas',$apuestas);
         $this->smarty->display('templates/index.tpl');
       }
 
   }
-
-
 
  ?>
