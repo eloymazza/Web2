@@ -1,0 +1,8 @@
+.main-content{
+    min-height: 85vh;
+}
+
+.form-border{
+    box-sizing: border-box;
+    border: 1px solid black;
+}
