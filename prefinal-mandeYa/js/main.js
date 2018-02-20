@@ -13,6 +13,16 @@ $('document').ready(function(){
 
     }).done(activarHandlers);
 
+    // Mejorar
+    $.get('pedidosEnEspera', '', function(pedidos){
+
+        let html = '';
+        for(let pedido of pedidos){
+            html += '<tr><th>'+ pedido.destino +'</th><th>'+pedido.fecha+'</th><th>'+pedido.precio+'</th><th>'+pedido.nombre+'</th></tr>'; 
+        }          
+        $('.js-pedidos-pendientes').html(html);
+    });
+
     function activarHandlers(){
         $(".js-pedido").submit(function(e){
             e.preventDefault();
@@ -21,7 +31,7 @@ $('document').ready(function(){
     }
 
     function tomarPedido(form){
-        let data =form.serialize();
+        let data = form.serialize();
         $.post('tomarPedido',data, function(success){
             $('.js-exito-pedido').html(success);
             $('.js-pedido')[0].reset();

@@ -16,9 +16,7 @@
             $this->modeloPedidos = new ModeloPedidos();
             $this->modeloMandaderos = new ModeloMandaderos();
         }
-        
-        
-        
+           
         public function mostrarHome(){
             
             $this->vistaIndex->mostrarHome();
@@ -38,7 +36,7 @@
             $id_M = $this->getMejorMandadero($destino);
 
             if($id_M != -1){
-                $this->modeloPedidos->registrarPedido($fecha,$destino,'',$id_M);
+                $this->modeloPedidos->registrarPedido($fecha,$destino,50,$id_M);
                 $this->vistaIndex->pedidoExitoso();
             }
             else{
@@ -47,7 +45,6 @@
 
         }
         
-
         private function getMejorMandadero($destino){
 
             $mandaderosDisponibles = $this->modeloMandaderos->getMandaderosDisponibles();
@@ -67,11 +64,19 @@
             }
             return -1;
         }
-
+        
         private function calcularDistancia($destino, $ubicMandadero){
             return abs($destino - $ubicMandadero);
         }
 
+        public function getPedidosEnEspera(){
+
+            $pedidos = $this->modeloPedidos->getPedidosEnEspera();
+            header("Content-Type: application/json");
+            header("HTTP/1.1 200 OK");
+            echo json_encode($pedidos);
+
+        }
 
     }
         

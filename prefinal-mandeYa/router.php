@@ -14,8 +14,10 @@
           break;
         case 'tomarPedido':
           $api->tomarPedido();
+          break;
+        case 'pedidosEnEspera':
+          $api->getPedidosEnEspera();
         default:
-          # code...
           break;
       }
   }

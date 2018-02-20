@@ -10,8 +10,8 @@
 
         public function mostrarIndex(){
             
-            echo '<div class="row">
-            <div class="col-md-4 ml-1 form-border pt-1 pb-3">
+            echo '<div class="row justify-content-between">
+            <div class="col-md-3 form-border pt-1 pb-3">
                 <h3>Solicitar Mandado</h3>
                 <form class="js-pedido">
                     <div class="form-group">
@@ -31,13 +31,26 @@
                     <input type="submit" value="Realizar Pedido"></input>
                 </form>
                 </div>
-                <div class="col-md-4">
-                
-                </div>
-                <div class="col-md-4">
-                
-                </div>
-                
+                <div class="col-md-5 form-border pt-1 pb-3">
+                <h3> Pedidos </h3>
+                <h5> Pedidos en espera:</h5>
+                 <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Destino</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Nombre Mandadero</th>
+                    </tr>
+                  </thead>
+                  <tbody class="js-pedidos-pendientes">
+
+                  </tbody>
+                </table>
+            </div>
+            <div class="col-md-3 form-border pt-1 pb-3">
+                <h3> Otra Columna </h3>
+            </div>  
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -65,6 +78,3 @@
     }
     
     ?>
-
-
- 
