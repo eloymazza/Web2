@@ -21,7 +21,7 @@
         }
         
         public function getMandaderos(){
-            $sql = $this->db->prepare("SELECT id_M, ultima_ubicacion FROM mandadero");
+            $sql = $this->db->prepare("SELECT * FROM mandadero");
             $sql->execute([]);
             return $mandaderos = $sql->fetchAll();
         

@@ -34,10 +34,14 @@
             $fecha = $_POST['fecha'];
             $destino = $_POST['destino'];
             $id_M = $this->getMejorMandadero($destino);
-
             if($id_M != -1){
-                $this->modeloPedidos->registrarPedido($fecha,$destino,50,$id_M);
-                $this->vistaIndex->pedidoExitoso();
+                $pedidoRegistrado = $this->modeloPedidos->registrarPedido($fecha,$destino,50,$id_M);
+                $result['mensaje'] = $this->vistaIndex->pedidoExitoso();
+                $result['ultimoPedido'] = $pedidoRegistrado;
+                header("Content-Type: application/json");
+                header("HTTP/1.1 200 OK");
+                echo json_encode($result);
+                
             }
             else{
                 $this->vistaIndex->pedidoErroneo();
@@ -76,6 +80,36 @@
             header("HTTP/1.1 200 OK");
             echo json_encode($pedidos);
 
+        }
+
+        public function getCantPedidosRealizados($dia){        
+            return $this->modeloPedidos->getPedidosRealizados($dia);
+        }
+
+        public function getRankingMandaderos($mes){
+            $mesActual = '2018-'.$mes.'%';
+            $mandaderos = $this->modeloMandaderos->getMandaderos();
+            $rankingMandaderos= [];
+            $cont=0;
+            foreach ($mandaderos as $mandadero) {
+                $rankingMandaderos[$mandadero['nombre']] = $this->modeloPedidos->getCantPedidosRM($mandadero['id_M'], $mesActual);
+            }
+            arsort($rankingMandaderos);
+
+            $result = [];
+            $keys = array_keys($rankingMandaderos);
+            $values = array_values($rankingMandaderos);
+            for ($i=0; $i < count($rankingMandaderos); $i++) {
+                if($values[$i] > 0) 
+                $result[$i] = [
+                    'nombre' => $keys[$i],
+                    'cantPedidos' => $values[$i]
+                ];
+            }
+            header("Content-Type: application/json");
+            header("HTTP/1.1 200 OK");
+            echo json_encode($result);
+   
         }
 
     }

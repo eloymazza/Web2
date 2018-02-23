@@ -15,7 +15,6 @@ $('document').ready(function(){
 
     // Mejorar
     $.get('pedidosEnEspera', '', function(pedidos){
-
         let html = '';
         for(let pedido of pedidos){
             html += '<tr><th>'+ pedido.destino +'</th><th>'+pedido.fecha+'</th><th>'+pedido.precio+'</th><th>'+pedido.nombre+'</th></tr>'; 
@@ -28,16 +27,54 @@ $('document').ready(function(){
             e.preventDefault();
             tomarPedido($(this));
         });
+        $(".js-confirmar-dia-elegido").click(function(){
+            let diaElegido = $(".js-dia-elegido");
+            if(diaElegido.val() == ''){
+                alert("Debes elegir un dia");
+            }
+            else{
+                let fecha = diaElegido.serialize();
+                getCantPedidosEnviados(fecha);
+            }
+        });
+        $(".js-confirmar-mes-elegido").click(function(){
+            let mesElegido = $(".js-mes-elegido");
+            if(mesElegido.val() == ''){
+                alert("Debes elegir un mes");
+            }
+            else{
+                let mes = mesElegido.serialize();
+                getRankingMandaderos(mes);
+            }
+        });
     }
 
     function tomarPedido(form){
         let data = form.serialize();
-        $.post('tomarPedido',data, function(success){
-            $('.js-exito-pedido').html(success);
+        $.post('tomarPedido',data, function(result){
+            $('.js-exito-pedido').html(result.mensaje);
             $('.js-pedido')[0].reset();
+            let pedido = result.ultimoPedido;
+            let html = '<tr><th>'+ pedido.destino +'</th><th>'+pedido.fecha+'</th><th>'+pedido.precio+'</th><th>'+pedido.nombre+'</th></tr>';
+            $('.js-pedidos-pendientes').append(html); 
         });
     }
 
+    function getCantPedidosEnviados(fecha){
+        $.get('getPedidosRealizados',fecha, function(respuesta){
+            $(".js-cantidad-pedidos").html(respuesta);
+        });
+    }
+
+    function getRankingMandaderos(mes){
+        $.get('getRankingMandaderos',mes, function(mandaderos){
+            let html = '';
+            for(let mandadero of mandaderos){
+                html += '<li>'+mandadero.nombre+' con ' + mandadero.cantPedidos + ' pedidos enviados</li>';
+            }
+            $(".js-ranking").html(html);
+        });
+    }
 
 
 });
