@@ -112,6 +112,11 @@
    
         }
 
+        public function getIngresosPorDia($dia){
+            $mes = date('m');
+            echo array_sum($this->modeloPedidos->getIngresosDia($dia,$mes));
+        }
+
     }
         
         

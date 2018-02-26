@@ -22,6 +22,7 @@ $('document').ready(function(){
         $('.js-pedidos-pendientes').html(html);
     });
 
+
     function activarHandlers(){
         $(".js-pedido").submit(function(e){
             e.preventDefault();
@@ -46,6 +47,18 @@ $('document').ready(function(){
                 let mes = mesElegido.serialize();
                 getRankingMandaderos(mes);
             }
+        });
+        $(".formIngresosDia").submit(function(e){
+            e.preventDefault();
+            let dia = $(this).serialize();
+            getIngresosDia(dia);
+        });
+    }
+
+    function getIngresosDia(dia) {
+
+        $.get('ingresosPorDia', dia, function(respuesta){
+            $('.js-ingresos').html(respuesta + " $");
         });
     }
 

@@ -41,6 +41,12 @@
             return $sql->fetchAll()[0][0];
         }
 
+        public function getIngresosDia($dia, $mes){
+            $sql = $this->db->prepare('SELECT precio FROM pedido WHERE DAY(fecha)=? and MONTH(fecha)=? and estado=3');
+            $sql->execute([$dia, $mes]);
+            return ($sql->fetchAll(PDO::FETCH_COLUMN));
+        }
+
     }
 
 

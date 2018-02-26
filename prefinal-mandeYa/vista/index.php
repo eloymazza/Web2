@@ -44,7 +44,7 @@
                             </tr>
                         </thead>
                         <tbody class="js-pedidos-pendientes">
-
+                            
                         </tbody>
                     </table>
                     <h5>Cantidad Pedidos Realizados</h5>
@@ -56,7 +56,7 @@
                             <button class="js-confirmar-dia-elegido">Confirmar</button>
                         </div>
                         <div class="col-md-4">
-                            <div class="ml-1">Resultado:<span class="js-cantidad-pedidos"s></span></div>
+                            <div class="ml-1">Resultado:<span class="js-cantidad-pedidos"></span></div>
                         </div>
                     </div>
                 </div>
@@ -91,6 +91,18 @@
                                 </ol>
                             </div>
                         </div>
+                        <h5> Ingresos por dia</h5>
+                        <div class="calendario">
+                            <form class="formIngresosDia">
+                                <h6>Ultimo mes: <span>'.date('F').'</span></h6>
+                                <label for="diaIngresos">Elige un dia</label>
+                                <input type="number" name="diaIngresos" value="1" id="diaIngresos" min="1" max="28">    
+                                <button type="submit">Elegir</button>
+                            </form>
+                        </div>
+                        <div>
+                            Ingresos Totales: <span class="js-ingresos"> </span>
+                        <div> 
                 </div>  
             </div>
             <div class="row">

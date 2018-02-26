@@ -4,7 +4,6 @@
 
   $api = new API();
 
-
   if(isset($_GET['action'])){
       switch ($_GET['action']) {
         case '':
@@ -24,6 +23,9 @@
           break;
         case 'getRankingMandaderos':
           $api->getRankingMandaderos($_GET['mesElegido']);
+          break;
+        case 'ingresosPorDia':
+          $api->getIngresosPorDia($_GET['diaIngresos']);
         default:
           break;
       }
