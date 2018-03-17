@@ -1,5 +1,7 @@
 $('document').ready(function(){
 
+    let stateArray = ['asignado','en-envio','enviado'];
+
     $.ajax({
         'url': 'index',
         'mehtod': 'GET',
@@ -9,8 +11,6 @@ $('document').ready(function(){
         'error': function(e){
             console.log(e);
         }
-
-
     }).done(activarHandlers);
 
     // Mejorar
@@ -22,6 +22,13 @@ $('document').ready(function(){
         $('.js-pedidos-pendientes').html(html);
     });
 
+    $.get('getMandaderos','',function(mandaderos){
+        let html = '';
+        for(let mandadero of mandaderos){
+            html += '<option value="'+mandadero.id_M+'">'+ mandadero.nombre +'</option>'; 
+        }          
+        $('.js-opciones-mandaderos').html(html);
+    });
 
     function activarHandlers(){
         $(".js-pedido").submit(function(e){
@@ -53,6 +60,11 @@ $('document').ready(function(){
             let dia = $(this).serialize();
             getIngresosDia(dia);
         });
+        $(".js-mostrar-pedidos").click(function(){
+            let id_mandadero = $(".js-opciones-mandaderos").val();
+            getPedidos(id_mandadero);
+        });
+
     }
 
     function getIngresosDia(dia) {
@@ -89,6 +101,17 @@ $('document').ready(function(){
         });
     }
 
-
+    function getPedidos(id_mandadero){    
+        let data = {
+            'idMandadero' : id_mandadero
+        }
+        $.get('getPedidos',data, function(pedidos) {
+            let html = '';
+            for(let pedido of pedidos){
+                let estado = stateArray[pedido.estado-1];
+                html += '<tr><th>'+ pedido.destino +'</th><th>'+pedido.fecha+'</th><th>'+pedido.precio+'</th><th><img src="css/images/'+estado+'.png" alt="'+estado+'"></th></tr>';
+            }
+            $(".js-tabla-pedidos").html(html);
+        });
+    }
 });
-

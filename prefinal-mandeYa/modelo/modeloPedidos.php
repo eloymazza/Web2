@@ -47,6 +47,12 @@
             return ($sql->fetchAll(PDO::FETCH_COLUMN));
         }
 
+        public function getPedidos($id_M){
+
+            $sql = $this->db->prepare('SELECT * from pedido WHERE id_M=?');
+            $sql->execute([$id_M]);
+            return($sql->fetchAll());
+        }
     }
 
 

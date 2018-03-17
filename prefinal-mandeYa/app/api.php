@@ -117,6 +117,25 @@
             echo array_sum($this->modeloPedidos->getIngresosDia($dia,$mes));
         }
 
+        public function getMandaderos(){
+
+            $mandaderos = $this->modeloMandaderos->getMandaderos();
+            header("Content-Type: application/json");
+            header("HTTP/1.1 200 OK");
+            return json_encode($mandaderos);
+
+        }
+
+        public function getPedidos($id_M){
+
+            $pedidos = $this->modeloPedidos->getPedidos($id_M);
+            header("Content-Type: application/json");
+            header("HTTP/1.1 200 OK");
+            return json_encode($pedidos);
+
+
+        }
+
     }
         
         

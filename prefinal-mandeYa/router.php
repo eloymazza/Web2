@@ -26,7 +26,12 @@
           break;
         case 'ingresosPorDia':
           $api->getIngresosPorDia($_GET['diaIngresos']);
-        default:
+          break;
+        case 'getMandaderos':
+          echo $api->getMandaderos();
+          break;
+        case 'getPedidos':
+          echo $api->getPedidos($_GET['idMandadero']);
           break;
       }
   }
