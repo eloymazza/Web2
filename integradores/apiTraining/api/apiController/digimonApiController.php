@@ -17,6 +17,11 @@
       $digimons = $this->digiModel->getDigimons();
       return $this->json_response($digimons,200);
     }
+
+    public function getDigimonByID($params){
+      $digimon = $this->digiModel->getDigimonByID($params[':id']);
+      return $this->json_response($digimon,200);
+    }
   }
 
 

@@ -19,28 +19,12 @@
     * return if it matcher $url like "tarea/12"
     * and store 12 in a url params associated with ":id"
     */
-    private function matchURL($route_url, $url)
-    {
-      $urlExploded = explode('/', trim($url,'/'));
-      $route_urlExploded = explode('/', trim($route_url,'/'));
-      if(sizeof($urlExploded) != sizeof($route_urlExploded))
-        return false;
-      $this->params = [];
-      for($i = 0; $i< sizeof($urlExploded); $i++)
-        if($urlExploded[$i] != $route_urlExploded[$i] )
-          if($route_urlExploded[$i][0]== ":")
-            $this->params[$route_urlExploded[$i]] = $urlExploded[$i];
-          else
-            return false;
-      return true;
-    }
-
-    
-    public function Route($url)
+    public function Route($url) // $url = digimon/2
     {
       foreach ($this->routes as  $route) {
-        $route_url = $route[0];
-        $route_verb = $route[1];
+        //"digimon/:id", "GET", "DigimonApiController", "getDigimonByID");
+        $route_url = $route[0]; // "digimon/:id"
+        $route_verb = $route[1]; //  "GET"
         if($this->matchURL($route_url, $url) && $route_verb == $_SERVER['REQUEST_METHOD'])
         {
           $controller =  $route[2];
@@ -49,5 +33,25 @@
         }
       }
     }
-  }
+
+    private function matchURL($route_url, $url){// "digimon/:id" // "digimon/2"
+
+      $urlExploded = explode('/', trim($url,'/')); // ["digimon", "2"];
+      $route_urlExploded = explode('/', trim($route_url,'/')); // ["digimon", ":id"];
+      if(sizeof($urlExploded) != sizeof($route_urlExploded)){
+        return false;
+      }
+      $this->params = [];
+      for($i = 0; $i< sizeof($urlExploded); $i++){
+        if($urlExploded[$i] != $route_urlExploded[$i]){
+          if($route_urlExploded[$i][0]== ":"){
+            $this->params[$route_urlExploded[$i]] = $urlExploded[$i];
+          }
+          else{
+            return false;
+          }
+        }
+      }
+      return true;
+    }
 ?>

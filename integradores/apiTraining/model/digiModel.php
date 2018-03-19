@@ -16,5 +16,13 @@
       return $sql->fetchAll();
     }
 
+    public function getDigimonByID($id){
+
+      $sql = $this->db->prepare('SELECT * FROM digimon where id_digimon=?');
+      $sql->execute([$id]);
+      return $sql->fetchAll();
+
+    }
+
   }
 ?>

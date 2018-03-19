@@ -8,7 +8,7 @@
   $router = new Router();
   //url, verb, controller, method
   $router->AddRoute("digimon", "GET", "DigimonApiController", "getDigimons");
-  $router->AddRoute("", "GET", "DigimonApiController", "getDigimons");
+  $router->AddRoute("digimon/:id", "GET", "DigimonApiController", "getDigimonByID");
   /*
   $router->AddRoute("products/:id", "GET", "ProductsApiController", "getProduct");
   $router->AddRoute("products", "POST", "ProductsApiController", "createProduct");
@@ -25,7 +25,7 @@
   $router->AddRoute("comments/:id", "DELETE", "CommentsApiController", "deleteComment");
   */
 
-  $route = $_GET['resource'];
+  $route = $_GET['resource']; // digimon/2
   $array = $router->Route($route);
   if(sizeof($array) == 0)
     echo "404";
