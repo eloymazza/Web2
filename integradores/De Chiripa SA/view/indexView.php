@@ -5,8 +5,8 @@
 
       function __construct(){
         parent::__construct();
-
       }
+      
       function showIndex($juego,$imagen,$apuestas){
         $this->smarty->assign('juego',$juego);
         $this->smarty->assign('imagen',$imagen);
