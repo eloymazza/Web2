@@ -15,7 +15,6 @@
         function __construct(){
             $this->apiRouter = new ApiRouter();
         }
-
         function request($req){ 
             $action = $this->apiRouter->route($req);
             if(sizeof($action) == 0)
@@ -27,7 +26,6 @@
                 echo (new $controller())->$metodo($url_params);
             }
         }
-
     }
     
     $request = new Request();

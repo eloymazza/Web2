@@ -1,16 +1,13 @@
 <?php
 
-
     class ApiRouter {
 
         private $params;
-
         function __construct(){
 
         }
 
         public function route($requested_url) {
-            
             foreach (ConfigRoutes::$ROUTES as $route) {
                 $resource = $route[0];
                 $httpVerb = $route[1];
@@ -32,7 +29,7 @@
             for($i = 0; $i < sizeof($requested_urlExploded); $i++){
                 if($requested_urlExploded[$i] != $resourceExploded[$i]){
                     if($resourceExploded[$i][0]== ":"){
-                        $this->params[$route_urlExploded[$i]] = $requested_urlExploded[$i];
+                        $this->params[$resourceExploded[$i]] = $requested_urlExploded[$i];
                     }
                     else {
                         return false;

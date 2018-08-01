@@ -12,7 +12,11 @@
         }
 
         function showIndex(){
-            $this->view->showIndex($this->treeController->getTrees());
+            $trees = $this->treeController->getTrees();
+            $species = $this->treeController->getSpecies();
+            $notFlaggedTrees = $this->treeController->getNotFlaggedTrees();
+            $extEspecies = $this->treeController->getExtEspecies();
+            $this->view->showIndex($trees, $species, $notFlaggedTrees, $extEspecies);
         }
 
     }

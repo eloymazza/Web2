@@ -14,7 +14,19 @@
             return $trees;
         }
 
+        public function getSpecies(){
+            $species = $this->model->getSpecies();
+            return $species;
+        }
 
+        public function getNotFlaggedTrees(){
+            $notFlaggedTrees = $this->model->getNotFlaggedTrees();
+            return $notFlaggedTrees;
+        }
+
+        public function getExtEspecies(){
+            return $this->model->getExtEspecies();
+        }
    } 
 
 ?>
